@@ -4,12 +4,12 @@ import java.util.Set;
 
 public class WinCombinationVertical extends WinCombination {
 
-    public WinCombinationVertical(PlayCard card) {
-        super("Vertical", card);
+    public WinCombinationVertical() {
+        super("Vertical");
     }
 
     @Override
-    Set<Combination> calculate() {
+    Set<Combination> calculate(PlayCard card) {
         int rows = card.getRows();
         int cols = card.getCols();  
         
@@ -29,14 +29,13 @@ public class WinCombinationVertical extends WinCombination {
             }
             
             if (verticalValid)
-                add(col);
+                add(card, col);
         }
         return usedCombinations; 
     }
     
-    private void add(int col) {
+    private void add(PlayCard card, int col) {
         int rows = card.getRows();
         usedCombinations.add(new Combination(name, 0, rows - 1, col, col));
     }
-    
 }

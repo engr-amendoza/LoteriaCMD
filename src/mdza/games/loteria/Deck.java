@@ -67,11 +67,13 @@ public class Deck {
         
         return sb.toString();
     }
+    
+    public Card[] copy() { return (Card[]) deck.toArray(new Card[0]); }
    
     private Stack deck;
     
     public static void Tester() {
-        Card[] cards = LoteriaTester.cards;
+        Card[] cards = Tester.cards;
         Deck deck = new Deck(cards);
         System.out.println("~~ Deck created\n" + deck);
         deck.shuffle();

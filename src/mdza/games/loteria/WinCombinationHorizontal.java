@@ -4,18 +4,16 @@ import java.util.Set;
 
 public class WinCombinationHorizontal extends WinCombination {
 
-    public WinCombinationHorizontal(PlayCard card) {
-        super("Horizontal", card);
+    public WinCombinationHorizontal() {
+        super("Horizontal");
     }
-    
+
     @Override
-    Set<Combination> calculate() {
+    Set<Combination> calculate(PlayCard card) {
         int rows = card.getRows();
         int cols = card.getCols();
-        
-        //if (this.combinations != null)
-        //    return;
         int row;
+        
         for (row=0; row<rows; ++row) {
                     
             int col;
@@ -32,14 +30,14 @@ public class WinCombinationHorizontal extends WinCombination {
             }
             
             if (horizontalValid)
-                addEntry(row);
+                addEntry(card, row);
         }
         return usedCombinations;
     }
     
 
     
-    private void addEntry(int row) {
+    private void addEntry(PlayCard card, int row) {
         int cols = card.getCols();
         usedCombinations.add(new Combination(name, row, row, 0, cols - 1));
     }

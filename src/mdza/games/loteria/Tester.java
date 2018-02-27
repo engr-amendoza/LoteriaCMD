@@ -1,13 +1,11 @@
-
 package mdza.games.loteria;
 
 import java.util.EventObject;
 import java.util.Scanner;
-//
 import mdza.games.TurnBasedGameEventListener;
 import static mdza.games.loteria.PlayCard.initPlayCards;
 
-public class LoteriaTester {
+public class Tester {
 
     public static void main(String[] args) throws Exception {
         //Deck.Tester();
@@ -38,7 +36,8 @@ public class LoteriaTester {
             @Override
             public void handleGameFinished(EventObject e) {
                 Loteria loteria =  (Loteria) e.getSource();
-                System.out.println("The winner is: " + loteria.getWinner());
+                System.out.println("The winner is: " + 
+                        loteria.getWinner().getPlayCardName());
             }
 
             @Override
@@ -59,10 +58,13 @@ public class LoteriaTester {
                         loteria.dealPrevCard();
                         break;
                     case "loteria":
-                        try { loteria.loteria(playCards[0]); } 
+                        try { 
+                            if (!loteria.loteria(playCards[0]))
+                                System.out.println("Not yet a winner");
+                        } 
                         catch (Exception ex) { ex.printStackTrace(); }
                         break;
-                    case "continue":
+                    case "deal":
                     default:
                         try { loteria.dealNextCard(); } 
                         catch (Exception ex) { ex.printStackTrace(); }  
@@ -87,15 +89,21 @@ public class LoteriaTester {
             }
         };
 
-        Loteria loteria = new Loteria(new Dealer(cards), playCards);
+        Loteria loteria = new Loteria(new Dealer(cards), playCards,
+                new WinCombination[] { 
+                //new WinCombinationCorners(),
+                //new WinCombinationDiagonal(),
+                //new WinCombinationHorizontal(),
+                //new WinCombinationCenter(),
+                new WinCombinationOuter()
+            } 
+        );
+       
         loteria.addEventListener(listener);
         loteria.play();
-       // loteria.dealNextCard();
     }
     
-
-    
-    public static Card[] cards = {
+    public static final Card[] cards = {
                  new Card("GALLO")
                 ,new Card("DAMA")    
                 ,new Card("CATRIN")          
@@ -109,5 +117,4 @@ public class LoteriaTester {
                 ,new Card("BANDERA")
                 ,new Card("VIOLIN")
         };
-    
 }

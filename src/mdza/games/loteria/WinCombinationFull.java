@@ -5,30 +5,26 @@ import java.util.Set;
 
 public class WinCombinationFull extends WinCombination {
     
-    public WinCombinationFull(PlayCard card) {
-        super("Full", card);
+    public WinCombinationFull() {
+        super("Full");
     }
 
     @Override
-    Set<Combination> calculate() {
+    Set<Combination> calculate(PlayCard card) {
         int cols = card.getCols();
           
         if (!exists(0, 0, cols-1, cols-1)) {
-            Set<Combination> combinations = WinCombination.getCombinations(
-                    new WinCombination[] {  
-                        new WinCombinationHorizontal(this.card)
-                    }
-            );
+            Set<Combination> combinations = 
+                    new WinCombinationHorizontal().calculate(card);
         
             if (combinations.size() == cols) 
-                addEntry();
-
+                addEntry(card);
         }
 
         return usedCombinations;
     }
     
-    private void addEntry() {
+    private void addEntry(PlayCard card) {
         int rows = card.getRows();
         int cols = card.getCols();
         usedCombinations.add(new Combination(name, 0, 0, cols-1, cols-1));

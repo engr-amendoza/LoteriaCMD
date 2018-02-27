@@ -5,42 +5,21 @@ import java.util.Set;
 
 public abstract class WinCombination {
     
-    public WinCombination(String name, PlayCard card) {
+    public WinCombination(String name) {
         this.name = name;
-        this.card = card;
         usedCombinations = new HashSet<>();
     }
     
-    // OLD
-    /*
-    public static Set<Combination> getCombinations(
-            WinCombination[] winCombinations) {
-        //calculate();
-        //return combinations;
-        Set<Combination> validCombinations = new HashSet<>();
-        for (WinCombination winCombination : winCombinations) {
-            validCombinations.addAll( winCombination.calculate() );
-        }
-        return validCombinations;
-    }*/
+    public Set<Combination> getUsedCombinations() { return usedCombinations; }
     
-    public static Set<Combination> getCombinations(
-            WinCombination[] winCombinations) {
-        //calculate();
-        //return combinations;
-        Set<Combination> validCombinations = new HashSet<>();
-        for (WinCombination winCombination : winCombinations) {
-            validCombinations.addAll( winCombination.calculate() );
-        }
-        return validCombinations;
-    }
+    public String getName() { return this.name; }
     
-    abstract Set<Combination>  calculate();
+    abstract Set<Combination>  calculate(PlayCard card);
     
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%Combinations for %s\n", card.getPlayCardName()));
+        sb.append("Combinations\n");
         
         for (Combination combination : usedCombinations) {
             sb.append(String.format("%s\n", combination));
@@ -49,6 +28,11 @@ public abstract class WinCombination {
         return sb.toString();
     }
     
+    @Override
+    public boolean equals(Object o) {
+        WinCombination o2 = (WinCombination) o;
+        return this.getName().equalsIgnoreCase(o2.getName());
+    } 
         
     protected boolean exists(int startRow, int endRow, int startCol, int endCol) {
         return usedCombinations.contains(
@@ -105,13 +89,11 @@ public abstract class WinCombination {
         private String name;
     }
     
-    protected PlayCard card;
     protected Set<Combination> usedCombinations;
-     //
     protected String name;
     
     public static void Tester() throws Exception {
-        PlayCard[] playCards = PlayCard.initPlayCards(1, LoteriaTester.cards);
+        PlayCard[] playCards = PlayCard.initPlayCards(1, Tester.cards);
         
         System.out.println("Play Card:");
 
@@ -131,15 +113,18 @@ public abstract class WinCombination {
         
         
         System.out.println("Combinations found: ");
-        Set<Combination> validCombinations = 
-                WinCombination.getCombinations(new WinCombination[] {
-                    new WinCombinationHorizontal(playCards[0]),
-                    new WinCombinationVertical(playCards[0]),
-                    new WinCombinationDiagonal(playCards[0]),
-                    new WinCombinationCorners(playCards[0]),
-                    new WinCombinationFull(playCards[0]),
-                    new WinCombinationFull(playCards[0])
-        });
+       
+        Set<Combination> validCombinations = new HashSet<>();
+        validCombinations.addAll(
+               new WinCombinationHorizontal().calculate(playCards[0]));
+        validCombinations.addAll(
+               new WinCombinationVertical().calculate(playCards[0]));
+        validCombinations.addAll(
+               new WinCombinationDiagonal().calculate(playCards[0]));
+        validCombinations.addAll(
+               new WinCombinationCorners().calculate(playCards[0]));
+        validCombinations.addAll(
+               new WinCombinationFull().calculate(playCards[0]));
         
         for(Combination validCombination : validCombinations)
             System.out.println(validCombination); 

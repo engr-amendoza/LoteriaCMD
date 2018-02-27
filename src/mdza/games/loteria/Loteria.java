@@ -1,15 +1,28 @@
 package mdza.games.loteria;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import mdza.games.*;
 
 public class Loteria  {
-
+    
     public Loteria(Dealer dealer, PlayCard[] playCards) {
+        this(dealer, playCards, new WinCombinationFull[] {
+            new WinCombinationFull()
+        });
+    }
+
+    public Loteria(Dealer dealer, PlayCard[] playCards, 
+            WinCombination[] winCombinations) {
         this.dealer = dealer;
         this.playCards = playCards;
         this.listener = listener;
         this.isGameStarted = false;
         this.winner = null;
+        this.winCombinations = new HashSet<>();
+        this.winCombinations.addAll(Arrays.asList(winCombinations));
     }
     
     public void play() {
@@ -45,21 +58,19 @@ public class Loteria  {
         }
     }
     
-    public void loteria(PlayCard playCard) throws Exception {
-        if (isWinner(playCard))
-            gameFinishedEvent();
+    public boolean loteria(PlayCard playCard) throws Exception {
+        if (isWinner(playCard)) {
+            winner = playCard;
+            exit = true;
+            return true;
+        }
         else
-            movePendingEvent();//dealNextCard();
+            return false;
     }
     
-    //
+    // 
     // Getters
     //
-    
-    // 
-    // Setters
-    //
-    public void setWinCombinations(WinCombination
     
     public PlayCard getWinner() {
         return winner;
@@ -77,14 +88,35 @@ public class Loteria  {
         this.listener = null;
     }
     
+    
     //
     // Misc
     //
     
     private boolean isWinner(PlayCard playCard) {
+        
+        // at least one of the valid combinations is found
+        for (WinCombination wc : winCombinations) {
+            if (wc.calculate(playCard).size() < 1)
+                return false;
+        }
+        
+        // ensure playCards marked off (used slots) are called by the dealer
+        int rows = playCard.getRows();
+        int cols = playCard.getCols();
+        
+        for (int row=0; row<rows; ++row) {
+            for (int col=0; col<cols; ++col) {
+                if (playCard.isUsed(row, col)) {
+                    Card card = playCard.getSlot(row, col);
+                    if (!dealer.cardsUsed().contains(card))
+                        return false;
+                }
+            }
+        }
+        
         return true;
     }
-    
     
     
     //
@@ -114,7 +146,6 @@ public class Loteria  {
         GameEvent event = new GameEvent(this);
         if (listener != null) 
         listener.handleGameFinished(event);     
-        quit();
     }
     
     private synchronized Status movePendingEvent() throws Exception {
@@ -140,7 +171,6 @@ public class Loteria  {
     }
     
     public void quit() { 
-        //gameFinishedEvent();
         this.exit = true; 
     }
     
@@ -151,19 +181,5 @@ public class Loteria  {
     private boolean isGameStarted;
     private Card card;
     private PlayCard winner;
-    private WinCombination[] winCombinations;
-    /*
-    public enum WIN_COMBINATIONS {
-        FULL(20), 
-        ROW_LINE(3), 
-        COLUMN_LINE(3), 
-        DIAGONAL(7), 
-        CORNERS(4);
-        
-        private WIN_COMBINATIONS(int value) {
-            this.value = value;
-        }
-        
-        private final int value;
-    }*/
+    private Set<WinCombination> winCombinations;
 }

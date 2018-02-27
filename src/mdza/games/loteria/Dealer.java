@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mdza.games.loteria;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Dealer {
@@ -25,14 +21,14 @@ public class Dealer {
         return (Card) used.peek();
     }
     
-    
     public int cardsLeft() { return unused.size(); }
+    public List<Card> cardsUsed() { return Arrays.asList(used.copy()); }
     
     private Deck used;
     private Deck unused;
     
     public static void Tester() {
-        Card[] cards = LoteriaTester.cards;
+        Card[] cards = Tester.cards;
         Dealer dealer  = new Dealer(cards); 
         int size = cards.length;
         int i = 0;

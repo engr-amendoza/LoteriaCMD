@@ -1,11 +1,8 @@
-
 package mdza.games.loteria;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class PlayCard {
@@ -24,9 +21,7 @@ public class PlayCard {
         this.name = name;
         used = new boolean[rows][cols];
         playCard = new Card[rows][cols];
-        //combinations = new HashMap<>();
     }
-    
     
     //
     // Setters
@@ -63,6 +58,7 @@ public class PlayCard {
     public String toString() {
         StringBuilder slotSb = new StringBuilder();
         StringBuilder isUsedSb = new StringBuilder();
+        slotSb.append(String.format("-----> %s <-----\n", name));
         for (int row=0; row<rows; ++row) {
             slotSb.append("|");
             isUsedSb.append(" ==> |");
@@ -78,22 +74,7 @@ public class PlayCard {
         }
         return slotSb.toString();
     }
-    
-    /*
-    public void checkCard() {
-        // corners
-        if (!combinations.containsKey(Loteria.WIN_COMBINATIONS.CORNERS)) {
-            if (used[0][0] && used[0][cols - 1] 
-                && used[rows - 1][0] && used[0][cols - 1]) {
-                combinations.put(Loteria.WIN_COMBINATIONS.CORNERS, 1);
-            }
-        }
-    }
-    
-    public Map<Loteria.WIN_COMBINATIONS, Integer> getCombinations() {
-        return combinations;
-    }*/
-    
+        
     //
     // Helpers
     //
@@ -169,7 +150,7 @@ public class PlayCard {
         private Card[] cards;
         
         public static void Tester() throws Exception {
-            PlayCard card = new Builder(LoteriaTester.cards)
+            PlayCard card = new Builder(Tester.cards)
                     .setRows(2)
                     .setCols(3)
                     .setName("Dummy Card")
@@ -179,12 +160,12 @@ public class PlayCard {
             card.setSlot(1, 2);
             System.out.println("~~Randomly generated play card\n" + card);
         }
-        
     }
     
     //
     // Aux
     //
+    
     public static PlayCard[] initPlayCards(int numOfPlayers, Card[] cards) throws Exception {
         PlayCard[] playCards = new PlayCard[numOfPlayers];
         for(int i=0; i<numOfPlayers; ++i)
@@ -198,7 +179,6 @@ public class PlayCard {
     
     private boolean[][] used;
     private Card[][] playCard;
-    //private Map<Loteria.WIN_COMBINATIONS, Integer> combinations;
     private int rows;
     private int cols;
     private String name;
