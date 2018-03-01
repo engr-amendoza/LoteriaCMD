@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Dealer {
     
-    Dealer(Card[] cards) {
+    public Dealer(Card[] cards) {
         unused = new Deck(cards);
         used = new Deck();
         unused.shuffle();

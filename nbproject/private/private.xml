@@ -3,14 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/src/mdza/games/loteria/WinCombinationDiagonal.java</file>
-            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/src/mdza/games/loteria/WinCombinationHorizontal.java</file>
-            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/src/mdza/games/loteria/WinCombinationFull.java</file>
-            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/src/mdza/games/loteria/Loteria.java</file>
-            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/src/mdza/games/loteria/PlayCard.java</file>
-            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/src/mdza/games/loteria/LoteriaTester.java</file>
-            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/src/mdza/games/loteria/WinCombination.java</file>
-            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/src/mdza/games/loteria/WinCombinationCorners.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/WinCombinationFull.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/WinCombinationCenter.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/Tester.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/Loteria.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/WinCombinationDiagonal.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/WinCombinationHorizontal.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/Dealer.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/PlayCard.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/WinCombination.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/Card.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/WinCombinationVertical.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/WinCombinationCorners.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/WinCombinationOuter.java</file>
+            <file>file:/C:/Users/e4c/Documents/NetBeansProjects/Loteria/LoteriaCMD/src/mdza/games/loteria/Deck.java</file>
         </group>
     </open-files>
 </project-private>

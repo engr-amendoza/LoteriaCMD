@@ -89,7 +89,7 @@ public class Tester {
             }
         };
 
-        Loteria loteria = new Loteria(new Dealer(cards), playCards,
+        Loteria loteria = new Loteria(new Dealer(cards),
                 new WinCombination[] { 
                 //new WinCombinationCorners(),
                 //new WinCombinationDiagonal(),

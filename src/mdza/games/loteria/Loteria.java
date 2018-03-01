@@ -8,16 +8,14 @@ import mdza.games.*;
 
 public class Loteria  {
     
-    public Loteria(Dealer dealer, PlayCard[] playCards) {
-        this(dealer, playCards, new WinCombinationFull[] {
+    public Loteria(Dealer dealer) {
+        this(dealer, new WinCombinationFull[] {
             new WinCombinationFull()
         });
     }
 
-    public Loteria(Dealer dealer, PlayCard[] playCards, 
-            WinCombination[] winCombinations) {
+    public Loteria(Dealer dealer, WinCombination[] winCombinations) {
         this.dealer = dealer;
-        this.playCards = playCards;
         this.listener = listener;
         this.isGameStarted = false;
         this.winner = null;
@@ -148,13 +146,12 @@ public class Loteria  {
         listener.handleGameFinished(event);     
     }
     
-    private synchronized Status movePendingEvent() throws Exception {
+    private synchronized Object movePendingEvent() throws Exception {
         GameEvent event = new GameEvent(this);
-        Status status = null;
         if (listener != null) 
-            status = (Status) listener.handleMovePending(event);
+            return listener.handleMovePending(event);
 
-        return status;
+        return null;
     }
     
     private synchronized void moveInvalidEvent() {
@@ -177,7 +174,6 @@ public class Loteria  {
     private boolean exit;
     private Dealer dealer;
     private TurnBasedGameEventListener listener;
-    private PlayCard[] playCards;
     private boolean isGameStarted;
     private Card card;
     private PlayCard winner;
