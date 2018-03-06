@@ -1,3 +1,7 @@
+/*
+ * A wrapper container stack for holding cards.
+**/
+
 package mdza.games.loteria;
 
 import java.util.ArrayList;

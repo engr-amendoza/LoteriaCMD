@@ -1,3 +1,13 @@
+/*  ________________
+ * |_*_|_*_|_*_|_*_|
+ * |___|___|___|___|
+ * |___|___|___|___|
+ * |_*_|_*_|_*_|_*_|
+ *
+ * The above example depics a 4*4 playcard matrix
+ * Two horizontal combinations exists, both determined as valid by @calculate()
+*/
+
 package mdza.games.loteria;
 
 import java.util.Set;

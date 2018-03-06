@@ -1,3 +1,17 @@
+/*
+ * Base class for generating win combinations.
+ * Child implementations will provide their own implementation of a particular
+ * playcard win combinations a user can have to win the game.
+ *
+ * The @calculate(PlayCard) method (to be overriden) simply returns a hashset 
+ * containing (in case a combination can occur more than once in a playcard)
+ * 
+ * An intermediary static class Combination simply holds star/end positions for 
+ * row/col that denote where on a N*N matrix the combination was made
+ * (See WinCombinationHorizontal/WinCombinationVertical/WinCombinationDiagonal
+ * for an example)
+**/
+
 package mdza.games.loteria;
 
 import java.util.HashSet;

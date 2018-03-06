@@ -1,3 +1,7 @@
+/*
+ * A wrapper class container for holding used and used deck of cards
+*/
+
 package mdza.games.loteria;
 
 import java.util.Arrays;

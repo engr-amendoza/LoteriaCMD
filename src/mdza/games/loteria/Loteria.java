@@ -1,3 +1,14 @@
+/*   
+ *   Loteria: spanish bingo game.
+ *   A driver class containing all Loteria game events, card dealer and valid
+ *   win combinations for a game session.
+ *   Issues fixed:
+ *   1. Before dealNextCard would automatically invoke move
+ *      pending events. It calling class if, a delay was introduced in pending 
+ *      event (i.e. delay in between cards dealt), some cards would be "skipped"
+**/
+
+
 package mdza.games.loteria;
 
 import java.util.Arrays;
@@ -5,6 +16,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import mdza.games.*;
+
 
 public class Loteria  {
     
@@ -41,19 +53,21 @@ public class Loteria  {
         gameFinishedEvent();
     }
     
-    public void dealPrevCard() {
-        card = dealer.getPrevious();
+    public Card dealPrevCard() {
+        Card card = dealer.getPrevious();
         moveReceivedEvent(card);
+        return card;
     }
     
-    public void dealNextCard() throws Exception {
+    public Card dealNextCard() throws Exception {
+        Card card = null;
         if (dealer.cardsLeft() > 0) {
             card = dealer.getNext();
             moveReceivedEvent(card);
-            movePendingEvent();
         } else {
             exit = true;
         }
+        return card;
     }
     
     public boolean loteria(PlayCard playCard) throws Exception {
@@ -175,7 +189,6 @@ public class Loteria  {
     private Dealer dealer;
     private TurnBasedGameEventListener listener;
     private boolean isGameStarted;
-    private Card card;
     private PlayCard winner;
     private Set<WinCombination> winCombinations;
 }

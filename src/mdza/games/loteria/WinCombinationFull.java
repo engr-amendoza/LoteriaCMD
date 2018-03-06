@@ -1,3 +1,13 @@
+/*  ________________
+ * |_*_|_*_|_*_|_*_|
+ * |_*_|_*_|_*_|_*_|
+ * |_*_|_*_|_*_|_*_|
+ * |_*_|_*_|_*_|_*_|
+ *
+ * The above example depics a 4*4 playcard matrix
+ * A full combination exists, determined as valid by @calculate()
+*/
+
 package mdza.games.loteria;
 
 import java.util.Set;

@@ -1,3 +1,7 @@
+/*
+ * Tester class for the Loteria (spanish bingo) back-end game
+*/
+
 package mdza.games.loteria;
 
 import java.util.EventObject;
@@ -8,6 +12,8 @@ import static mdza.games.loteria.PlayCard.initPlayCards;
 public class Tester {
 
     public static void main(String[] args) throws Exception {
+        // Test cases (uncomment to test)
+        
         //Deck.Tester();
         //Dealer.Tester();
         //PlayCard.Builder.Tester();
@@ -90,6 +96,7 @@ public class Tester {
         };
 
         Loteria loteria = new Loteria(new Dealer(cards),
+                // Available win combinations (uncomment to test)
                 new WinCombination[] { 
                 //new WinCombinationCorners(),
                 //new WinCombinationDiagonal(),
@@ -103,18 +110,19 @@ public class Tester {
         loteria.play();
     }
     
+    // Dummy test cards for Animals
     public static final Card[] cards = {
-                 new Card("GALLO")
-                ,new Card("DAMA")    
-                ,new Card("CATRIN")          
-                ,new Card("PERICO")     
-                ,new Card("MUNDO") 
-                ,new Card("MUSICO")
-                ,new Card("DIABLITO")
-                ,new Card("BORRACHO")
-                ,new Card("ARPAS")
-                ,new Card("JARRAS")
-                ,new Card("BANDERA")
-                ,new Card("VIOLIN")
+                 new Card("MONKEY")
+                ,new Card("BIRD")    
+                ,new Card("CAT")          
+                ,new Card("DOG")     
+                ,new Card("TIGER") 
+                ,new Card("LION")
+                ,new Card("PIG")
+                ,new Card("COW")
+                ,new Card("RAT")
+                ,new Card("RABBIT")
+                ,new Card("JAGUAR")
+                ,new Card("BEATLE")
         };
 }

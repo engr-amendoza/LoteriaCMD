@@ -1,3 +1,8 @@
+/*
+ * A card entity to be used for filling in PlayCard slots or to be dealt by 
+ * a Dealer
+**/
+
 package mdza.games.loteria;
 
 public class Card {

@@ -1,3 +1,12 @@
+/*  ________________
+ * |_*_|_*_|_*_|_*_|
+ * |_*_|___|___|_*_|
+ * |_*_|___|___|_*_|
+ * |_*_|_*_|_*_|_*_|
+ *
+ * The above example depics a 4*4 playcard matrix
+ * An outer combinations exists, determined as valid by @calculate()
+*/
 package mdza.games.loteria;
 
 import java.util.Set;

@@ -1,3 +1,8 @@
+/*
+ * An N*N matrix container for cards
+ * Each cell (or slot) can be set as en/disabled to denote a user marking the 
+ * the slot as used (i.e. the dealer has dealt the card)
+*/
 package mdza.games.loteria;
 
 import java.util.Arrays;
@@ -79,18 +84,6 @@ public class PlayCard {
     // Helpers
     //
     
-    private static String RPad(String str, Integer length, char car) {
-        return String.format("%" + (length - str.length()) + "s", "")
-               .replace(" ", String.valueOf(car)) +  str;
-    }
-    
-    private static String LPad(String str, Integer length, char car) {
-        return str
-         + 
-         String.format("%" + (length - str.length()) + "s", "")
-                     .replace(" ", String.valueOf(car));
-    }
-    
     private void initRandomSlots(Card[] card) {
         List<Card> cardsCopy = new LinkedList<>(Arrays.asList(card));
         int size = card.length;
@@ -165,6 +158,19 @@ public class PlayCard {
     //
     // Aux
     //
+    
+    private static String RPad(String str, Integer length, char car) {
+        return String.format("%" + (length - str.length()) + "s", "")
+               .replace(" ", String.valueOf(car)) +  str;
+    }
+    
+    private static String LPad(String str, Integer length, char car) {
+        return str
+         + 
+         String.format("%" + (length - str.length()) + "s", "")
+                     .replace(" ", String.valueOf(car));
+    }
+    
     
     public static PlayCard[] initPlayCards(int numOfPlayers, Card[] cards) throws Exception {
         PlayCard[] playCards = new PlayCard[numOfPlayers];

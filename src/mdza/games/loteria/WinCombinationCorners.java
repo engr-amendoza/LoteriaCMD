@@ -1,3 +1,13 @@
+/*  ________________
+ * |_*_|___|___|_*_|
+ * |___|___|___|___|
+ * |___|___|___|___|
+ * |_*_|___|___|_*_|
+ *
+ * The above example depics a 4*4 playcard matrix
+ * A corner combination exists, determined as valid by @calculate()
+*/
+
 package mdza.games.loteria;
 
 import java.util.Set;

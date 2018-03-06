@@ -1,3 +1,13 @@
+/*  ________________
+ * |___|___|___|___|
+ * |___|_*_|_*_|___|
+ * |___|_*_|_*_|___|
+ * |___|___|___|___|
+ *
+ * The above example depics a 4*4 playcard matrix
+ * A center combination exists, determined as valid by @calculate()
+*/
+
 package mdza.games.loteria;
 
 import java.util.Set;
@@ -22,7 +32,7 @@ public class WinCombinationCenter extends WinCombination {
                     if (!card.isUsed(row, col)) {
                         centerValid = false;
                     break;
-                }
+                    }
                 }
             }
             
